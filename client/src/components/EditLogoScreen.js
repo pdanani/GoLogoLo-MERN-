@@ -54,7 +54,7 @@ const UPDATE_LOGO = gql`
 `;
 
 class EditLogoScreen extends Component {
-
+   
     render() {
         let text, color, fontSize, backgroundColor,borderColor,borderRadius,borderWidth,padding,margin;
         return (
@@ -66,7 +66,8 @@ class EditLogoScreen extends Component {
                     return (
                         <Mutation mutation={UPDATE_LOGO} key={data.logo._id} onCompleted={() => this.props.history.push(`/`)}>
                             {(updateLogo, { loading, error }) => (
-                                <div className="container">
+                                <div className="container row">
+                                    <div className = "col s4">
                                     <div className="panel panel-default">
                                         <div className="panel-heading">
                                             <h4><Link to="/">Home</Link></h4>
@@ -164,6 +165,34 @@ class EditLogoScreen extends Component {
                                             {error && <p>Error :( Please try again</p>}
                                         </div>
                                     </div>
+                                    </div>
+                                    <div className="col s8" >
+                                        <div style = {{
+                                       color:data.logo.color,
+                                       fontSize:  data.logo.fontSize,
+                                       backgroundColor:data.logo.backgroundColor,
+                                       borderColor:data.logo.borderColor,
+                                       borderRadius: data.logo.borderRadius,
+                                       borderWidth: data.logo.borderWidth,
+                                       padding: data.logo.padding,
+                                       margin:data.logo.margin
+
+
+                                    }}>
+
+
+                                    {data.logo.text}    
+                                    </div>
+                                                    
+                                              
+                                        
+                                      </div>
+
+
+
+
+
+
                                 </div>
                             )}
                         </Mutation>

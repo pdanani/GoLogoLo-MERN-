@@ -32,17 +32,30 @@ const ADD_LOGO = gql`
 `;
 
 class CreateLogoScreen extends Component {
-    checkSpaces=(e)=>{
-        e.value.trim();
+    state = {
+        text:"Default Logo",
+        color :"#000000",
+        fontSize : 24+"px",
+        backgroundColor:"#FFFFFF" ,
+        borderColor:"#000000",
+        borderRadius:50+"px",
+        borderWidth:5+"px",
+        padding:5+"px",
+        margin:5+"px",
 
 
-    }
+   
+
+    } 
+
     render() {
+    
         let text, color, fontSize, backgroundColor,borderColor,borderRadius,borderWidth,padding,margin; //this is where yo uleft off pawan!
         return (
             <Mutation mutation={ADD_LOGO} onCompleted={() => this.props.history.push('/')}>
                 {(addLogo, { loading, error }) => (
-                    <div className="container">
+                    <div className="container row">
+                        <div className= "col s4">
                         <div className="panel panel-default">
                             <div className="panel-heading">
                                 <h4><Link  id ="home-btn" className="rounded btn-lg btn-info"  to="/">Home</Link></h4>
@@ -67,19 +80,19 @@ class CreateLogoScreen extends Component {
                                 }}>
                                     <div className="form-group">
                                         <label htmlFor="text">Text:</label>
-                                        <input type="text" className="form-control" name="text" onkeypress="checkSpaces(event)" ref={node => {
+                                        <input onChange={(e) => this.setState({text:e.target.value})} type="text" className="form-control" name="text" id="txt" ref={node => {
                                             text = node;
                                         }} placeholder="Text" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="color">Color:</label>
-                                        <input type="color" className="form-control" name="color" ref={node => {
+                                        <input  onChange={(e) => this.setState({color:e.target.value})}  type="color" className="form-control" name="color" ref={node => {
                                             color = node;
                                         }} placeholder="Color" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="fontSize">Font Size:</label>
-                                        <input type="number" className="form-control" name="fontSize" ref={node => {
+                                        <input onChange={(e) => this.setState({fontSize:e.target.value})}  type="number" className="form-control" name="fontSize" ref={node => {
                                             fontSize = node;
                                         }} placeholder="Font Size" />
                                     </div>
@@ -90,42 +103,42 @@ class CreateLogoScreen extends Component {
                                    
                                     <div className="form-group">
                                         <label htmlFor="backgroundColor">Background Color:</label>
-                                        <input type="color" className="form-control" name="backgroundColor" ref={node => {
+                                        <input onChange={(e) => this.setState({backgroundColor:e.target.value})} type="color" className="form-control" name="backgroundColor" ref={node => {
                                             backgroundColor = node;
                                         }} placeholder="Background Color" />
                                     </div>
                                         
                                     <div className="form-group">
                                         <label htmlFor="borderColor">Border Color:</label>
-                                        <input type="color" className="form-control" name="borderColor" ref={node => {
+                                        <input onChange={(e) => this.setState({borderColor:e.target.value})} type="color" className="form-control" name="borderColor" ref={node => {
                                             borderColor = node;
                                         }} placeholder="Border Color" />
                                     </div>
                                     
                                     <div className="form-group">
                                         <label htmlFor="borderRadius">Border Radius:</label>
-                                        <input type="number" className="form-control" name="borderRadius" ref={node => {
+                                        <input onChange={(e) => this.setState({borderRadius:e.target.value})} type="number" className="form-control" name="borderRadius" ref={node => {
                                             borderRadius = node;
                                         }} placeholder="Border Radius" />
                                     </div>
                                
                                     <div className="form-group">
                                         <label htmlFor="borderWidth">Border Width:</label>
-                                        <input type="number" className="form-control" name="borderWidth" ref={node => {
+                                        <input onChange={(e) => this.setState({borderWidth:e.target.value})}  type="number" className="form-control" name="borderWidth" ref={node => {
                                             borderWidth = node;
                                         }} placeholder="Border Width" />
                                     </div>
                                   
                                     <div className="form-group">
                                         <label htmlFor="padding">Padding:</label>
-                                        <input type="number" className="form-control" name="padding" ref={node => {
+                                        <input onChange={(e) => this.setState({padding:e.target.value})}  type="number" className="form-control" name="padding" ref={node => {
                                             padding = node;
                                         }} placeholder="Padding" />
                                     </div>
                                     
                                     <div className="form-group">
                                         <label htmlFor="margin">Margin:</label>
-                                        <input type="number" className="form-control" name="margin" ref={node => {
+                                        <input  onChange={(e) => this.setState({margin:e.target.value})} type="number" className="form-control" name="margin" ref={node => {
                                             margin = node;
                                         }} placeholder="Margin" />
                                     </div>
@@ -142,7 +155,39 @@ class CreateLogoScreen extends Component {
                                 {error && <p>Error :( Please try again</p>}
                             </div>
                         </div>
+
+                        </div>
+                        <div className="col s8">
+                        <div  style = {{
+                                       color:this.state.color,
+                                       fontSize: this.state.fontSize,
+                                       backgroundColor:this.state.backgroundColor,
+                                       borderColor:this.state.borderColor,
+                                       borderRadius: this.state.borderRadius,
+                                       borderWidth: this.state.borderWidth,
+                                       padding: this.state.padding,
+                                       margin:this.state.margin
+
+
+                                    }}>
+
+
+                                    {this.state.text}  
+
+
+
+                        </div> 
+
+
+
+
+                        </div>
+
+
+                  
+
                     </div>
+                         
                 )}
             </Mutation>
         );
