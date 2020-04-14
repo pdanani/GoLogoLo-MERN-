@@ -54,6 +54,9 @@ const UPDATE_LOGO = gql`
 `;
 
 class EditLogoScreen extends Component {
+
+
+    
    
     render() {
         let text, color, fontSize, backgroundColor,borderColor,borderRadius,borderWidth,padding,margin;
@@ -70,7 +73,7 @@ class EditLogoScreen extends Component {
                                     <div className = "col s4">
                                     <div className="panel panel-default">
                                         <div className="panel-heading">
-                                            <h4><Link to="/">Home</Link></h4>
+                                            <h4><Link className="rounded btn-lg btn-info"   to="/">Home</Link></h4>
                                             <h3 className="panel-title">
                                                 Edit Logo
                                         </h3>
@@ -158,8 +161,11 @@ class EditLogoScreen extends Component {
 
 
 
+                                                <div className= "container row">
+                                                <button id="sub" type="submit" className="btn btn-success">Submit</button>
+                                                <Link id= "cancel" className="rounded btn-lg btn-danger"   to="/">Cancel</Link>
+                                                </div>
 
-                                                <button type="submit" className="btn btn-success">Submit</button>
                                             </form>
                                             {loading && <p>Loading...</p>}
                                             {error && <p>Error :( Please try again</p>}
@@ -168,6 +174,8 @@ class EditLogoScreen extends Component {
                                     </div>
                                     <div className="col s8" >
                                         <div style = {{
+                                                    border:'solid',
+
                                        color:data.logo.color,
                                        fontSize:  data.logo.fontSize,
                                        backgroundColor:data.logo.backgroundColor,

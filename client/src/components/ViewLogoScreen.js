@@ -44,7 +44,7 @@ class ViewLogoScreen extends Component {
                             <div className="col s4">
                             <div className="panel panel-default">
                                 <div className="panel-heading">
-                                    <h4><Link to="/">Home</Link></h4>
+                                    <h4><Link className="rounded btn-lg btn-info"   to="/">Home</Link></h4>
                                     <h3 className="panel-title">
                                         View Logo
                                     </h3>
@@ -93,6 +93,8 @@ class ViewLogoScreen extends Component {
                             </div>
                             <div className= "col s8" >
                                 <div style = {{
+                                            border:'solid',
+
                                         color:data.logo.color,
                                         fontSize:  data.logo.fontSize,
                                         backgroundColor:data.logo.backgroundColor,
