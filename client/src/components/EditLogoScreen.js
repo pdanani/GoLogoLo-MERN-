@@ -56,16 +56,35 @@ const UPDATE_LOGO = gql`
 class EditLogoScreen extends Component {
 
 
-    
-   
+
+  
     render() {
+
+        
         let text, color, fontSize, backgroundColor,borderColor,borderRadius,borderWidth,padding,margin;
         return (
             <Query query={GET_LOGO} variables={{ logoId: this.props.match.params.id }}>
                 {({ loading, error, data }) => {
                     if (loading) return 'Loading...';
                     if (error) return `Error! ${error.message}`;
+                    this.state = {
 
+                        text:data.logo.text,
+                        color :data.logo.color,
+                        fontSize :data.logo.fontSize,
+                        backgroundColor:data.logo.backgroundColor ,
+                        borderColor:data.logo.bordercolor,
+                        borderRadius:data.logo.borderRadius,
+                        borderWidth:data.logo.borderWidth,
+                        padding:data.logo.padding,
+                        margin:data.logo.margin,
+                    
+                    
+                    
+                    } 
+    
+   
+                 
                     return (
                         <Mutation mutation={UPDATE_LOGO} key={data.logo._id} onCompleted={() => this.props.history.push(`/`)}>
                             {(updateLogo, { loading, error }) => (
@@ -88,7 +107,7 @@ class EditLogoScreen extends Component {
                                             }}>
                                                 <div className="form-group">
                                                     <label htmlFor="text">Text:</label>
-                                                    <input type="text" className="form-control" name="text" ref={node => {
+                                                    <input  onChange={(e) => this.setState({text:e.target.value})} type="text" className="form-control" name="text" ref={node => {
                                                         text = node;
                                                     }} placeholder="Text" defaultValue={data.logo.text} />
                                                 </div>
@@ -100,7 +119,7 @@ class EditLogoScreen extends Component {
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="fontSize">Font Size:</label>
-                                                    <input type="text" className="form-control" name="fontSize" ref={node => {
+                                                    <input min="0" max ="80" type="text" className="form-control" name="fontSize" ref={node => {
                                                         fontSize = node;
                                                     }} placeholder="Font Size" defaultValue={data.logo.fontSize} />
                                                 </div>
@@ -108,7 +127,7 @@ class EditLogoScreen extends Component {
 
                                     <div className="form-group">
                                         <label htmlFor="backgroundColor">Background Color:</label>
-                                        <input type="color" className="form-control" name="backgroundColor" ref={node => {
+                                        <input  type="color" className="form-control" name="backgroundColor" ref={node => {
                                             backgroundColor = node;
                                         }} placeholder="Background Color"defaultValue={data.logo.backgroundColor}  />
                                     </div>
@@ -122,28 +141,28 @@ class EditLogoScreen extends Component {
                                     
                                     <div className="form-group">
                                         <label htmlFor="borderRadius">Border Radius:</label>
-                                        <input type="number" className="form-control" name="borderRadius" ref={node => {
+                                        <input min="0" max ="80" type="number" className="form-control" name="borderRadius" ref={node => {
                                             borderRadius = node;
                                         }} placeholder="Border Radius"   defaultValue={data.logo.borderRadius} />
                                     </div>
                                
                                     <div className="form-group">
                                         <label htmlFor="borderWidth">Border Width:</label>
-                                        <input type="number" className="form-control" name="borderWidth" ref={node => {
+                                        <input min="0" max ="80" type="number" className="form-control" name="borderWidth" ref={node => {
                                             borderWidth = node;
                                         }} placeholder="Border Width" defaultValue={data.logo.borderWidth} />
                                     </div>
                                   
                                     <div className="form-group">
                                         <label htmlFor="padding">Padding:</label>
-                                        <input type="number" className="form-control" name="padding" ref={node => {
+                                        <input min="0" max ="80" type="number" className="form-control" name="padding" ref={node => {
                                             padding = node;
                                         }} placeholder="Padding" defaultValue={data.logo.padding} />
                                     </div>
                                     
                                     <div className="form-group">
                                         <label htmlFor="margin">Margin:</label>
-                                        <input type="number" className="form-control" name="margin" ref={node => {
+                                        <input min="0" max ="80" type="number" className="form-control" name="margin" ref={node => {
                                             margin = node;
                                         }} placeholder="Margin"defaultValue={data.logo.margin} />
                                     </div>
@@ -176,20 +195,20 @@ class EditLogoScreen extends Component {
                                         <div style = {{
                                                     border:'solid',
 
-                                       color:data.logo.color,
-                                       fontSize:  data.logo.fontSize,
-                                       backgroundColor:data.logo.backgroundColor,
-                                       borderColor:data.logo.borderColor,
-                                       borderRadius: data.logo.borderRadius,
-                                       borderWidth: data.logo.borderWidth,
-                                       padding: data.logo.padding,
-                                       margin:data.logo.margin
+                                                    color:this.state.color,
+                                                    fontSize: this.state.fontSize,
+                                                    backgroundColor:this.state.backgroundColor,
+                                                    borderColor:this.state.borderColor,
+                                                    borderRadius: this.state.borderRadius,
+                                                    borderWidth: this.state.borderWidth,
+                                                    padding: this.state.padding,
+                                                    margin:this.state.margin
 
 
                                     }}>
 
 
-                                    {data.logo.text}    
+                                    {this.state.text}    
                                     </div>
                                                     
                                               

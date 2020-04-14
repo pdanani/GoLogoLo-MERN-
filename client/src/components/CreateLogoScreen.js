@@ -31,7 +31,30 @@ const ADD_LOGO = gql`
     }
 `;
 
+
+
+
+const def = {
+
+    text:"Default Logo",
+    color :"#000000",
+    fontSize : "24pt",
+    backgroundColor:"#FFFFFF" ,
+    borderColor:"#000000",
+    borderRadius:"15pt",
+    borderWidth:"15pt",
+    padding:"15pt",
+    margin:"15pt",
+    border:'solid',
+
+
+
+} ;
+
+
 class CreateLogoScreen extends Component {
+   
+
     state = {
 
         text:"Default Logo",
@@ -44,10 +67,12 @@ class CreateLogoScreen extends Component {
         padding:"15pt",
         margin:"15pt",
         border:'solid',
+    
+    
+    
+    } ;
+  
 
-   
-
-    } 
 
     render() {
     
@@ -150,7 +175,7 @@ class CreateLogoScreen extends Component {
 
 
 
-                                    <button type="submit" className="btn btn-success">Submit</button>
+                                    <button type="submit"   className="btn btn-success">Submit</button>
                                 </form>
                                 {loading && <p>Loading...</p>}
                                 {error && <p>Error :( Please try again</p>}
