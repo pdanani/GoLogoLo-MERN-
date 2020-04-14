@@ -60,7 +60,7 @@ class CreateLogoScreen extends Component {
         text:"Default Logo",
         color :"#000000",
         fontSize : "24pt",
-        backgroundColor:"#FFFFFF" ,
+        backgroundColor:"#000000" ,
         borderColor:"#000000",
         borderRadius:"15pt",
         borderWidth:"15pt",

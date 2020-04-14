@@ -53,11 +53,17 @@ const UPDATE_LOGO = gql`
         }
 `;
 
+
+
 class EditLogoScreen extends Component {
 
 
 
-  
+    state = {
+
+    
+    
+    } 
     render() {
 
         
@@ -67,22 +73,29 @@ class EditLogoScreen extends Component {
                 {({ loading, error, data }) => {
                     if (loading) return 'Loading...';
                     if (error) return `Error! ${error.message}`;
-                    this.state = {
-
+                    if(this.state.margin==null){
+                    this.setState({
                         text:data.logo.text,
-                        color :data.logo.color,
-                        fontSize :data.logo.fontSize,
-                        backgroundColor:data.logo.backgroundColor ,
-                        borderColor:data.logo.bordercolor,
-                        borderRadius:data.logo.borderRadius,
-                        borderWidth:data.logo.borderWidth,
-                        padding:data.logo.padding,
-                        margin:data.logo.margin,
-                    
-                    
-                    
-                    } 
+        color :data.logo.color,
+        fontSize :data.logo.fontSize,
+        backgroundColor:data.logo.backgroundColor ,
+        borderColor:data.logo.bordercolor,
+        borderRadius:data.logo.borderRadius,
+        borderWidth:data.logo.borderWidth,
+        padding:data.logo.padding,
+        margin:data.logo.margin
     
+
+
+
+
+
+
+
+
+
+                    })
+                }
    
                  
                     return (
@@ -119,7 +132,7 @@ class EditLogoScreen extends Component {
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="fontSize">Font Size:</label>
-                                                    <input min="0" max ="80" type="text" className="form-control" name="fontSize" ref={node => {
+                                                    <input min="0" max ="80"  onChange={(e) => this.setState({fontSize:e.target.value+"pt"})} type="text" className="form-control" name="fontSize" ref={node => {
                                                         fontSize = node;
                                                     }} placeholder="Font Size" defaultValue={data.logo.fontSize} />
                                                 </div>
