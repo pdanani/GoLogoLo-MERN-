@@ -1,5 +1,6 @@
 Full MERN Stack application to create logos
 
+![Screenshot](Screen Shot 2020-10-22 at 5.47.44 PM)
 
 
 
