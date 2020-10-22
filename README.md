@@ -1,7 +1,7 @@
 Full MERN Stack application to create logos
 
 
-
+Screen Shot 2020-10-22 at 5.47.44 PM
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
